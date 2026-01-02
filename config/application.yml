@@ -25,10 +25,15 @@ logging:
 
 eureka:
   client:
-    serviceUrl:
-      defaultZone: http://localhost:8761/eureka/
-    fetch-registry: true
-    register-with-eureka: true
+    healthcheck:
+      enabled: true
+    ServiceUrl:
+      defaultZone: http://localhost:8761/eureka
   instance:
-    prefer-ip-address: true
+    appName: event-service
+    preferIpAddress: true
+    instanceId: ${spring.application.name}:${spring.application.instance_id:${random.value}}
+    non-secure-port: ${server.port}
     lease-renewal-interval-in-seconds: 10
+	metadata-map:
+      instanceId: ${spring.application.name}:${random.value}
