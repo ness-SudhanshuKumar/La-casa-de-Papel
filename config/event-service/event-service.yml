@@ -19,5 +19,5 @@ eureka:
     instanceId: ${spring.application.name}:${spring.application.instance_id:${random.value}}
     non-secure-port: ${server.port}
     lease-renewal-interval-in-seconds: 10
-  metadata-map:
+    metadata-map:
       instanceId: ${spring.application.name}:${random.value}
