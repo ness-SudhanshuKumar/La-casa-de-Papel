@@ -6,3 +6,18 @@ spring:
     name: event-service
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
+
+eureka:
+  client:
+    healthcheck:
+      enabled: true
+    ServiceUrl:
+      defaultZone: http://localhost:8761/eureka
+  instance:
+    appName: event-service
+    preferIpAddress: true
+    instanceId: ${spring.application.name}:${spring.application.instance_id:${random.value}}
+    non-secure-port: ${server.port}
+    lease-renewal-interval-in-seconds: 10
+	metadata-map:
+      instanceId: ${spring.application.name}:${random.value}
