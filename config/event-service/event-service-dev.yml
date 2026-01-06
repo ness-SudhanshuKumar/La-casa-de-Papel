@@ -16,3 +16,28 @@ logging:
 
 server:
   port: ${PORT:0}
+
+resilience4j:
+  circuitbreaker:
+    instances:
+      dbService:
+        failure-rate-threshold: 50
+        slow-call-rate-threshold: 50
+        slow-call-duration-threshold: 2s
+        minimum-number-of-calls: 10
+        sliding-window-size: 20
+        wait-duration-in-open-state: 30s
+        permitted-number-of-calls-in-half-open-state: 5
+        automatic-transition-from-open-to-half-open-enabled: true
+
+  timelimiter:
+    instances:
+      dbService:
+        timeout-duration: 3s
+
+  retry:
+    instances:
+      dbService:
+        max-attempts: 2
+        wait-duration: 200ms
+  
