@@ -40,4 +40,17 @@ resilience4j:
       dbService:
         max-attempts: 2
         wait-duration: 200ms
-  
+management:
+  health:
+    circuitbreakers:
+      enabled: true
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics,gateway,routes
+      base-path: /actuator  # Default
+  endpoint:
+    health:
+      show-details: always
+    shutdown:
+      enabled: false
