@@ -37,3 +37,7 @@ eureka:
     lease-renewal-interval-in-seconds: 10
     metadata-map:
       instanceId: ${spring.application.name}:${random.value}
+
+profile:
+  message: Hello from Config Server
+  feature-enabled: true

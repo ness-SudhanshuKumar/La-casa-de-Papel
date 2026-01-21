@@ -32,7 +32,7 @@ management:
   endpoints:
     web:
       exposure:
-        include: health,info,metrics,gateway,routes
+        include: health,info,metrics,gateway,routes,refresh
       base-path: /actuator  # Default
   endpoint:
     health:
